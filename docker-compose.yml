@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: developer
+      POSTGRES_PASSWORD: root
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  rails_work:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -b '0.0.0.0'"
+    volumes:
+      - .:/Rails-Docker
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    environment:
+      RAILS_MASTER_KEY: this_would_be_the_key
+
+volumes:
+  postgres:
