@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ .bg-skyblue {
+  background-color: #0b506c; /* This is the hex code for sky blue */
+}
+
+.center {
+  padding-top: 10%;
+  margin-right: 10%;
+  margin-left: 40%;
+}
